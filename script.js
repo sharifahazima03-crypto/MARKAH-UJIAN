@@ -2,7 +2,7 @@
 // 2) Tampal URL deployment di bawah.
 const CONFIG = {
   API_URL: "https://script.google.com/macros/s/AKfycbztkjVEcQ-NWHrzsQWsMIRPb05JEtKAuoGs8SatuUFSZPyR0qJRGzGmTGl5q8FSROgJ/exec"
-};
+}
 
 const state = { masters: { murid: [], guru: [], kelas: [], subjek: [] }, records: [] };
 const $ = (id) => document.getElementById(id);

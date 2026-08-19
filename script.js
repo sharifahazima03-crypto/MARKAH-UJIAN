@@ -1,7 +1,7 @@
 // 1) Deploy Code.gs sebagai Google Apps Script Web App.
 // 2) Tampal URL deployment di bawah.
 const CONFIG = {
-  API_URL: "PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE"
+  API_URL: "https://script.google.com/macros/s/AKfycbztkjVEcQ-NWHrzsQWsMIRPb05JEtKAuoGs8SatuUFSZPyR0qJRGzGmTGl5q8FSROgJ/exec"
 };
 
 const state = { masters: { murid: [], guru: [], kelas: [], subjek: [] }, records: [] };

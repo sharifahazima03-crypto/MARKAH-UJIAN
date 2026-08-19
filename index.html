@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d8b8f" />
+  <title>Sistem Perekodan Markah Ujian</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">SISTEM REKOD PRESTASI MURID</p>
+      <h1>PEREKODAN MARKAH UJIAN</h1>
+    </div>
+    <div id="statusPill" class="status-pill">Menyambung ke Google Sheet...</div>
+  </header>
+
+  <main class="page-shell">
+    <nav class="tabs" aria-label="Navigasi utama">
+      <button class="tab-btn active" data-tab="rekod">Borang Rekod</button>
+      <button class="tab-btn" data-tab="dashboard">Dashboard Analisis</button>
+    </nav>
+
+    <section id="tab-rekod" class="tab-panel active">
+      <div class="card form-card">
+        <div class="form-grid four-cols">
+          <label>
+            <span>Tarikh</span>
+            <input id="tarikh" type="date" />
+          </label>
+          <label>
+            <span>Nama Guru</span>
+            <select id="guru"><option value="">Pilih guru</option></select>
+          </label>
+          <label>
+            <span>Kelas</span>
+            <select id="kelas"><option value="">Pilih kelas</option></select>
+          </label>
+          <label>
+            <span>Subjek</span>
+            <select id="subjek"><option value="">Pilih subjek</option></select>
+          </label>
+        </div>
+
+        <div class="section-title-row">
+          <div>
+            <h2>Senarai Murid & Markah</h2>
+            <p>Pilih kelas. Nama murid dipaparkan automatik. Guru hanya perlu menaip markah.</p>
+          </div>
+          <div class="quick-actions">
+            <button id="kosongkanMarkah" class="btn ghost" type="button">Kosongkan Markah</button>
+          </div>
+        </div>
+
+        <div class="table-wrap student-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="num-col">Bil</th>
+                <th>Nama Murid</th>
+                <th class="mark-col">Markah Ujian</th>
+                <th class="grade-col">Gred</th>
+              </tr>
+            </thead>
+            <tbody id="muridBody">
+              <tr><td colspan="4" class="empty">Pilih kelas untuk memaparkan senarai murid.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="form-footer">
+          <span id="rekodInfo" class="muted">Tiada markah diisi.</span>
+          <button id="simpanRekod" class="btn primary" type="button">Simpan Rekod</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-dashboard" class="tab-panel">
+      <div class="card filter-card">
+        <div class="form-grid filter-grid">
+          <label><span>Tapis Kelas</span><select id="filterKelas"><option value="">Semua Kelas</option></select></label>
+          <label><span>Tapis Subjek</span><select id="filterSubjek"><option value="">Semua Subjek</option></select></label>
+          <label><span>Tapis Guru</span><select id="filterGuru"><option value="">Semua Guru</option></select></label>
+          <label><span>Nama Murid</span><select id="filterMurid"><option value="">Semua Murid</option></select></label>
+          <label><span>Tarikh Mula</span><input id="filterMula" type="date" /></label>
+          <label><span>Tarikh Akhir</span><input id="filterAkhir" type="date" /></label>
+          <div class="filter-actions">
+            <button id="resetFilter" class="btn ghost" type="button">Reset Tapisan</button>
+            <button id="cetakLaporan" class="btn primary" type="button">Cetak Laporan</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="reportArea" class="card report-card">
+        <div class="report-heading">
+          <div>
+            <p class="eyebrow">LAPORAN KESELURUHAN</p>
+            <h2>Prestasi Ujian Murid</h2>
+          </div>
+          <p id="reportGenerated" class="muted"></p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat"><span>Jumlah Rekod</span><strong id="statJumlah">0</strong></div>
+          <div class="stat"><span>Purata Markah</span><strong id="statPurata">0</strong></div>
+          <div class="stat"><span>Markah Tertinggi</span><strong id="statTinggi">0</strong></div>
+          <div class="stat"><span>Markah Terendah</span><strong id="statRendah">0</strong></div>
+        </div>
+
+        <div class="table-wrap report-table-wrap">
+          <table id="reportTable">
+            <thead>
+              <tr>
+                <th>Bil</th>
+                <th>Tarikh</th>
+                <th>Nama Murid</th>
+                <th>Nama Guru</th>
+                <th>Kelas</th>
+                <th>Subjek</th>
+                <th>Markah</th>
+                <th>Gred</th>
+                <th class="no-print">Tindakan</th>
+              </tr>
+            </thead>
+            <tbody id="reportBody">
+              <tr><td colspan="9" class="empty">Belum ada rekod untuk tapisan semasa.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
